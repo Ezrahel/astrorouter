@@ -1,0 +1,28 @@
+node_modules/
+dist/
+*.log
+.DS_Store
+.env
+.env.local
+.output
+.vscode
+
+# Local database files
+data/
+flags/
+format_schemas/
+metadata/
+metadata_dropped/
+preprocessed_configs/
+status
+store/
+tmp/
+user_files/
+uuid
+
+
+# Misc
+test-apps
+video
+pnpm-lock.yaml
+md

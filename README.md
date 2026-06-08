@@ -1,0 +1,72 @@
+<a href="https://vercel.com/oss">
+  <img alt="Vercel OSS Program" src="https://vercel.com/oss/program-badge.svg" />
+</a>
+
+# AstroRouter
+
+**Expose your localhost to the internet.** AstroRouter is an open-source tunneling solution that lets you share local servers with anyone, anywhere.
+
+
+## Features
+
+- **HTTP Tunnels** - Expose web servers with custom subdomains
+- **TCP Tunnels** - Tunnel any TCP service (databases, game servers, etc.)
+- **UDP Tunnels** - Tunnel UDP traffic (DNS, VoIP, TFTP, etc.)
+- **Custom Domains** - Bring your own domain with automatic TLS
+- **Dashboard** - Monitor traffic, view analytics, manage tunnels
+- **Team Support** - Collaborate with organizations and role-based access
+
+## Quick Start
+
+### Install the CLI
+
+```bash
+npm install -g astroroute
+```
+
+### Create a tunnel
+
+```bash
+# HTTP tunnel
+astroroute http 3000
+
+# TCP tunnel (e.g., for PostgreSQL)
+astroroute tcp 5432
+
+# UDP tunnel
+astroroute udp 53
+```
+
+### Requirements
+
+- Node.js 20+
+- PostgreSQL
+- Redis
+- Tiger Data (TimescaleDB)
+
+### Project Structure
+
+```
+astroroute/
+├── apps/
+│   ├── cli/             # CLI client
+│   ├── cron/            # Background jobs
+│   ├── internal-check/  # Domain verification for Caddy
+│   ├── landing/         # Marketing website
+│   ├── tunnel/          # Tunnel server
+│   └── web/             # Dashboard & API
+├── shared/              # Shared utilities
+└── deploy/              # Deployment configs
+```
+
+## Documentation
+
+Visit [astroroute.dev/docs](https://astroroute.dev/docs) for full documentation.
+
+## Contributing
+
+Contributions are welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+
+## License
+
+AGPL-3.0-only

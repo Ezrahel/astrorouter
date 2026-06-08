@@ -1,0 +1,23 @@
+{
+  "name": "astroroute",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "apps/tunnel",
+    "apps/cli",
+    "apps/web"
+  ],
+  "scripts": {
+    "install:all": "npm install && cd apps/tunnel && npm install && cd ../cli && npm install && cd ../web && npm install",
+    "dev:tunnel": "cd apps/tunnel && npm run dev",
+    "dev:web": "cd apps/web && npm run dev",
+    "build": "cd apps/tunnel && npm run build && cd ../cli && npm run build && cd ../web && npm run build"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.2"
+  },
+  "dependencies": {
+    "axios": "^1.13.2",
+    "zustand": "^5.0.9"
+  }
+}
