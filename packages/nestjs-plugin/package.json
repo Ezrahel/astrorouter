@@ -46,11 +46,11 @@
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "https://github.com/akinloluwami/astroroute.git",
+        "url": "https://github.com/ezrahel/astroroute.git",
         "directory": "packages/nestjs-plugin"
     },
     "homepage": "https://astroroute.dev",
     "bugs": {
-        "url": "https://github.com/akinloluwami/astroroute/issues"
+        "url": "https://github.com/ezrahel/astroroute/issues"
     }
 }

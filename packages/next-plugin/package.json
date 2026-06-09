@@ -42,11 +42,11 @@
     "tsup": "^8.0.0",
     "typescript": "^5.9.3"
   },
-  "author": "akinloluwami",
+  "author": "ezrahel",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/akinloluwami/astroroute.git",
+    "url": "https://github.com/ezrahel/astroroute.git",
     "directory": "packages/next-plugin"
   },
   "homepage": "https://astroroute.dev/nextjs"

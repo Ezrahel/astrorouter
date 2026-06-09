@@ -412,7 +412,7 @@ export const Navbar = () => {
               Pricing
             </Link>
             <a
-              href="https://github.com/akinloluwami/astroroute"
+              href="https://github.com/ezrahel/astroroute"
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setMobileMenuOpen(false)}
@@ -453,7 +453,7 @@ export const Navbar = () => {
                   Status
                 </a>
                 <a
-                  href="https://github.com/akinloluwami/astroroute/issues/new"
+                  href="https://github.com/ezrahel/astroroute/issues/new"
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setMobileMenuOpen(false)}

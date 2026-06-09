@@ -7,7 +7,7 @@ interface GitHubButtonProps {
 }
 
 export const GitHubButton = ({ size = "md" }: GitHubButtonProps) => {
-  const [stars, setStars] = useState<number | null>(600);
+  const [stars, setStars] = useState<number | null>(10);
 
   useEffect(() => {
     const fetchStars = async () => {
@@ -37,7 +37,7 @@ export const GitHubButton = ({ size = "md" }: GitHubButtonProps) => {
 
   return (
     <a
-      href="https://github.com/akinloluwami/astroroute"
+      href="https://github.com/ezrahel/astroroute"
       target="_blank"
       rel="noopener noreferrer"
       className={`group relative inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm transition-all duration-300 hover:border-white/20 hover:bg-white/10 hover:scale-105 ${

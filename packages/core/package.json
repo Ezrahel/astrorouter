@@ -37,16 +37,16 @@
     "tsup": "^8.0.0",
     "typescript": "^5.0.0"
   },
-  "author": "akinloluwami",
+  "author": "ezrahel",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/akinloluwami/astroroute.git",
+    "url": "https://github.com/ezrahel/astroroute.git",
     "directory": "packages/core"
   },
   "homepage": "https://astroroute.dev",
   "bugs": {
-    "url": "https://github.com/akinloluwami/astroroute/issues"
+    "url": "https://github.com/ezrahel/astroroute/issues"
   },
   "engines": {
     "node": ">=16.0.0"

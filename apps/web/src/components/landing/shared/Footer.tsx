@@ -49,7 +49,7 @@ export const Footer = () => {
               </li>
               <li>
                 <a
-                  href="https://github.com/akinloluwami/astroroute"
+                  href="https://github.com/ezrahel/astroroute"
                   target="_blank"
                   className="hover:text-white transition-colors"
                 >

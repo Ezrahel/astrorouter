@@ -182,7 +182,7 @@ export const ChangelogPage = () => {
                   Twitter
                 </a>
                 <a
-                  href="https://github.com/akinloluwami/astroroute"
+                  href="https://github.com/ezrahel/astroroute"
                   target="_blank"
                   className="px-4 py-2 bg-white/5 hover:bg-white/10 rounded-lg text-sm text-white/60 hover:text-white transition-colors"
                 >

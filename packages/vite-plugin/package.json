@@ -41,15 +41,15 @@
     "typescript": "^5.9.3",
     "vite": "^7.0.0"
   },
-  "author": "akinloluwami",
+  "author": "ezrahel",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/akinloluwami/astroroute.git",
+    "url": "https://github.com/ezrahel/astroroute.git",
     "directory": "packages/vite-plugin"
   },
   "homepage": "https://astroroute.dev",
   "bugs": {
-    "url": "https://github.com/akinloluwami/astroroute/issues"
+    "url": "https://github.com/ezrahel/astroroute/issues"
   }
 }

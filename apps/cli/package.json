@@ -34,16 +34,16 @@
     "tunneling",
     "development"
   ],
-  "author": "akinloluwami",
+  "author": "ezrahel",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/akinloluwami/astroroute.git",
+    "url": "https://github.com/ezrahel/astroroute.git",
     "directory": "apps/cli"
   },
-  "homepage": "https://github.com/akinloluwami/astroroute#readme",
+  "homepage": "https://github.com/ezrahel/astroroute#readme",
   "bugs": {
-    "url": "https://github.com/akinloluwami/astroroute/issues"
+    "url": "https://github.com/ezrahel/astroroute/issues"
   },
   "engines": {
     "node": ">=16.0.0"
