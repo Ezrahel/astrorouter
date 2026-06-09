@@ -1,6 +1,5 @@
-// Allow self-signed certificates for Tiger Data cloud
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
-
+// Tiger Data cloud uses standard TLS certificates
+// We configure TLS per-connection instead of globally disabling
 import { redis } from "./lib/redis";
 import { pool, execute } from "./lib/timescale";
 import { chargePaystackSubscriptions } from "./lib/paystack";

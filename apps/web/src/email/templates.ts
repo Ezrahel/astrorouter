@@ -82,7 +82,7 @@ export const emailTemplates: EmailTemplates = {
                 Hi ${name},
               </p>
               <p style="margin: 0 0 16px 0; font-size: 16px; line-height: 24px; color: #3f3f46;">
-                I'm Akinkunmi, the creator of AstroRoute. I'm happy to have you onboard! <br/> <br/> AstroRoute makes it easy to expose your local development servers to the internet securely.
+                I'm Israel, the creator of AstroRoute. I'm happy to have you onboard! <br/> <br/> AstroRoute makes it easy to expose your local development servers to the internet securely.
               </p>
               <p style="margin: 0 0 24px 0; font-size: 16px; line-height: 24px; color: #3f3f46;">
                 Get started by installing the CLI and creating your first tunnel.
@@ -103,7 +103,7 @@ export const emailTemplates: EmailTemplates = {
               </p>
               <p style="margin: 0; font-size: 16px; line-height: 24px; color: #3f3f46;">
                 Cheers,<br>
-                Akinkunmi
+                Israel
               </p>
             </td>
           </tr>

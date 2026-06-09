@@ -8,7 +8,6 @@ import dotenv from "dotenv";
 dotenv.config();
 
 // --- Schema Definitions (Simplified for this service) ---
-// We only need what's necessary for the check
 
 const tunnels = pgTable("tunnels", {
   id: text("id").primaryKey(),
@@ -21,25 +20,34 @@ const domains = pgTable("domains", {
   status: text("status").notNull(),
 });
 
-// --- Database Connection ---
+// --- Database Connection with Pool and Reconnect ---
 
-const client = new pg.Client({
+const pool = new pg.Pool({
   connectionString: process.env.DATABASE_URL,
+  max: 5,
+  idleTimeoutMillis: 30000,
+  connectionTimeoutMillis: 5000,
+});
+
+pool.on("error", (err) => {
+  console.error("Unexpected database pool error:", err);
 });
 
 async function connectDb() {
   try {
-    await client.connect();
-    console.log("Connected to database");
+    const client = await pool.connect();
+    await client.query("SELECT 1");
+    client.release();
+    console.log("Connected to database (pool)");
   } catch (err) {
-    console.error("Failed to connect to database", err);
-    process.exit(1);
+    console.error("Failed to connect to database:", err);
+    setTimeout(connectDb, 5000);
   }
 }
 
 connectDb();
 
-const db = drizzle(client);
+const db = drizzle(pool);
 
 const app = express();
 const port = process.env.PORT || 3001;

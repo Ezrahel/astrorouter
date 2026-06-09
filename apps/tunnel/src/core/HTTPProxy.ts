@@ -7,6 +7,17 @@ import { getBandwidthKey } from "../../../../shared/utils";
 import { logger, requestCaptureLogger } from "../lib/timescale";
 import { LogManager } from "./LogManager";
 
+const BANDWIDTH_INCR_SCRIPT = `
+  local key = KEYS[1]
+  local increment = tonumber(ARGV[1])
+  local limit = tonumber(ARGV[2])
+  local newUsage = redis.call('INCRBY', key, increment)
+  if newUsage > limit then
+    return 0
+  end
+  return 1
+`;
+
 export class HTTPProxy {
   private router: TunnelRouter;
   private baseDomain: string;
@@ -54,8 +65,26 @@ export class HTTPProxy {
 
     try {
       const headers: Record<string, string | string[]> = {};
+      const FORBIDDEN_HEADERS = new Set([
+        "x-forwarded-for",
+        "x-forwarded-host",
+        "x-forwarded-proto",
+        "x-real-ip",
+        "x-vercel-forwarded-for",
+        "fly-client-ip",
+        "cf-connecting-ip",
+        "cf-ray",
+        "cf-ipcountry",
+        "cf-visitor",
+        "true-client-ip",
+        "proxy-connection",
+        "transfer-encoding",
+        "te",
+        "upgrade",
+        "proxy-authorization",
+      ]);
       Object.entries(req.headers).forEach(([key, value]) => {
-        if (value !== undefined) {
+        if (value !== undefined && !FORBIDDEN_HEADERS.has(key.toLowerCase())) {
           headers[key] = value;
         }
       });
@@ -96,26 +125,19 @@ export class HTTPProxy {
       const shouldEnforce =
         bandwidthKey && bandwidthLimit !== undefined && bandwidthLimit !== -1;
 
-      // Check initial limit
-      if (shouldEnforce && redis) {
-        const currentUsage = await redis.get(bandwidthKey!);
-        if (currentUsage && parseInt(currentUsage) >= bandwidthLimit!) {
-          res.writeHead(402, { "Content-Type": "text/html" });
-          res.end(this.getBandwidthExceededHtml(tunnelId));
-          return;
-        }
-      }
-
       const chunks: Buffer[] = [];
       for await (const chunk of req) {
         const bufferChunk = Buffer.from(chunk);
 
         if (shouldEnforce && redis) {
-          const newUsage = await redis.incrby(
+          const allowed = await redis.eval(
+            BANDWIDTH_INCR_SCRIPT,
+            1,
             bandwidthKey!,
-            bufferChunk.length,
+            bufferChunk.length.toString(),
+            bandwidthLimit!.toString(),
           );
-          if (newUsage > bandwidthLimit!) {
+          if (allowed === 0) {
             res.writeHead(402, { "Content-Type": "text/html" });
             res.end(this.getBandwidthExceededHtml(tunnelId));
             return;
@@ -144,8 +166,14 @@ export class HTTPProxy {
         responseSize = responseBuffer.length;
 
         if (shouldEnforce && redis) {
-          const newUsage = await redis.incrby(bandwidthKey!, responseSize);
-          if (newUsage > bandwidthLimit!) {
+          const allowed = await redis.eval(
+            BANDWIDTH_INCR_SCRIPT,
+            1,
+            bandwidthKey!,
+            responseSize.toString(),
+            bandwidthLimit!.toString(),
+          );
+          if (allowed === 0) {
             res.writeHead(402, { "Content-Type": "text/html" });
             res.end(this.getBandwidthExceededHtml(tunnelId));
             return;

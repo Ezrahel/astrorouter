@@ -28,7 +28,9 @@ const dbPool = new Pool({
   ssl:
     process.env.NODE_ENV === "production"
       ? { rejectUnauthorized: false }
-      : false,
+      : process.env.DB_SSL === "true"
+        ? { rejectUnauthorized: false }
+        : false,
 });
 
 interface Subscription {

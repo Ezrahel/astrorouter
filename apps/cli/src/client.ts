@@ -536,11 +536,10 @@ export class OutRayClient {
         // Set a timeout to detect if pong is not received
         this.stopPongTimeout();
         this.pongTimeout = setTimeout(() => {
-          // No pong received within timeout - connection is likely dead
-          // This commonly happens after system sleep/wake
+          if (!this.shouldReconnect) return;
           console.log(chalk.dim("Connection appears stale, reconnecting..."));
           if (this.ws) {
-            this.ws.terminate(); // Force close instead of graceful close
+            this.ws.terminate();
           }
         }, this.PONG_TIMEOUT_MS);
       }

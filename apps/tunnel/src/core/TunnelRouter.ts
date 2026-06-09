@@ -323,24 +323,7 @@ export class TunnelRouter {
           "NX",
         );
         if (result === "OK") {
-          // Add to org's online tunnels set using dbTunnelId
-          if (metadata?.organizationId && metadata?.dbTunnelId) {
-            await this.redis.sadd(
-              `org:${metadata.organizationId}:online_tunnels`,
-              metadata.dbTunnelId,
-            );
-            // Add org to global index for O(1) lookup
-            await this.redis.sadd(
-              "global:orgs_with_online_tunnels",
-              metadata.organizationId,
-            );
-            await this.redis.set(
-              `tunnel:last_seen:${metadata.dbTunnelId}`,
-              Date.now().toString(),
-              "EX",
-              this.ttlSeconds,
-            );
-          }
+          await this.recordOnlineTunnel(metadata);
           return true;
         }
 
@@ -351,54 +334,20 @@ export class TunnelRouter {
             try {
               const parsed = JSON.parse(existing);
               if (parsed.userId === metadata.userId) {
-                // Same user
                 if (forceTakeover) {
-                  // Force takeover requested - close existing tunnel and take over
                   if (this.tunnels.has(tunnelId)) {
                     const existingWs = this.tunnels.get(tunnelId);
                     existingWs?.close();
                     this.tunnels.delete(tunnelId);
                   }
                   await this.redis.set(key, redisValue, "EX", this.ttlSeconds);
-                  if (metadata?.organizationId && metadata?.dbTunnelId) {
-                    await this.redis.sadd(
-                      `org:${metadata.organizationId}:online_tunnels`,
-                      metadata.dbTunnelId,
-                    );
-                    await this.redis.sadd(
-                      "global:orgs_with_online_tunnels",
-                      metadata.organizationId,
-                    );
-                    await this.redis.set(
-                      `tunnel:last_seen:${metadata.dbTunnelId}`,
-                      Date.now().toString(),
-                      "EX",
-                      this.ttlSeconds,
-                    );
-                  }
+                  await this.recordOnlineTunnel(metadata);
                   return true;
                 } else if (!this.tunnels.has(tunnelId)) {
-                  // Tunnel is not active, allow takeover
                   await this.redis.set(key, redisValue, "EX", this.ttlSeconds);
-                  if (metadata?.organizationId && metadata?.dbTunnelId) {
-                    await this.redis.sadd(
-                      `org:${metadata.organizationId}:online_tunnels`,
-                      metadata.dbTunnelId,
-                    );
-                    await this.redis.sadd(
-                      "global:orgs_with_online_tunnels",
-                      metadata.organizationId,
-                    );
-                    await this.redis.set(
-                      `tunnel:last_seen:${metadata.dbTunnelId}`,
-                      Date.now().toString(),
-                      "EX",
-                      this.ttlSeconds,
-                    );
-                  }
+                  await this.recordOnlineTunnel(metadata);
                   return true;
                 }
-                // Tunnel is actively connected, deny takeover
                 return false;
               }
             } catch (e) {
@@ -408,43 +357,48 @@ export class TunnelRouter {
         }
         return false;
       } else {
-        // XX mode (heartbeat refresh)
-        const result = await this.redis.set(
-          key,
-          redisValue,
-          "EX",
-          this.ttlSeconds,
-          "XX",
-        );
-
-        if (result === null) {
-          return this.persistTunnelState(tunnelId, "NX", metadata);
-        }
-
-        // Add to online_tunnels SET and refresh last_seen timestamp
-        if (metadata?.organizationId && metadata?.dbTunnelId) {
-          await this.redis.sadd(
-            `org:${metadata.organizationId}:online_tunnels`,
-            metadata.dbTunnelId,
-          );
-          await this.redis.sadd(
-            "global:orgs_with_online_tunnels",
-            metadata.organizationId,
-          );
-          await this.redis.set(
-            `tunnel:last_seen:${metadata.dbTunnelId}`,
-            Date.now().toString(),
-            "EX",
-            this.ttlSeconds,
-          );
-        }
-
+        // XX mode — use Lua script that tries SET XX first,
+        // then falls back to NX atomically
+        const PERSIST_SCRIPT = `
+          local key = KEYS[1]
+          local value = ARGV[1]
+          local ttl = tonumber(ARGV[2])
+          local exists = redis.call('EXISTS', key)
+          if exists == 1 then
+            redis.call('SET', key, value, 'EX', ttl, 'XX')
+            return 1
+          end
+          redis.call('SET', key, value, 'EX', ttl, 'NX')
+          return 1
+        `;
+        await this.redis.eval(PERSIST_SCRIPT, 1, key, redisValue, this.ttlSeconds.toString());
+        await this.recordOnlineTunnel(metadata);
         return true;
       }
     } catch (error) {
       console.error("Failed to persist tunnel state", error);
       return false;
     }
+  }
+
+  private async recordOnlineTunnel(metadata?: TunnelMetadata): Promise<void> {
+    if (!this.redis || !metadata?.organizationId || !metadata?.dbTunnelId) {
+      return;
+    }
+    await this.redis.sadd(
+      `org:${metadata.organizationId}:online_tunnels`,
+      metadata.dbTunnelId,
+    );
+    await this.redis.sadd(
+      "global:orgs_with_online_tunnels",
+      metadata.organizationId,
+    );
+    await this.redis.set(
+      `tunnel:last_seen:${metadata.dbTunnelId}`,
+      Date.now().toString(),
+      "EX",
+      this.ttlSeconds,
+    );
   }
 
   private startHeartbeat(): void {

@@ -82,13 +82,13 @@ export async function rateLimit(
             remaining: Math.max(0, config.maxRequests - currentCount),
         };
     } catch (error) {
-        console.error("Rate limit error:", error);
+        console.error("Rate limit error (failing closed):", error);
         return {
-            allowed: true,
-            current: 0,
+            allowed: false,
+            current: config.maxRequests,
             limit: config.maxRequests,
             resetIn: config.windowSeconds,
-            remaining: config.maxRequests,
+            remaining: 0,
         };
     }
 }

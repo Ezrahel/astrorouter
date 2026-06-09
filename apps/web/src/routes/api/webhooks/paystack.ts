@@ -3,6 +3,13 @@ import { verifyWebhookSignature } from "../../../lib/paystack";
 import { db } from "../../../db";
 import { subscriptions } from "../../../db/subscription-schema";
 import { eq, and } from "drizzle-orm";
+import { redis } from "../../../lib/redis";
+
+async function deduplicateWebhookEvent(eventId: string): Promise<boolean> {
+  const dedupKey = `webhook:paystack:${eventId}`;
+  const exists = await redis.set(dedupKey, "1", "EX", 300, "NX");
+  return exists === "OK";
+}
 
 export const Route = createFileRoute("/api/webhooks/paystack")({
   server: {
@@ -43,6 +50,13 @@ export const Route = createFileRoute("/api/webhooks/paystack")({
         }
 
         console.log(`[Paystack Webhook] Received event: ${event.event}`);
+
+        // Deduplicate — Paystack may redeliver events
+        const eventId = `${event.event}:${(event.data as { reference?: string })?.reference || JSON.stringify(event.data)}`;
+        if (!(await deduplicateWebhookEvent(eventId))) {
+          console.log(`[Paystack Webhook] Duplicate skipped: ${eventId}`);
+          return Response.json({ received: true, deduplicated: true });
+        }
 
         try {
           switch (event.event) {

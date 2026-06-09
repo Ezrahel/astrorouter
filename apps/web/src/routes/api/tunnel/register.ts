@@ -50,6 +50,20 @@ export const Route = createFileRoute("/api/tunnel/register")({
             return Response.json({ error: "Missing URL for tunnel" }, { status: 400 });
           }
 
+          // Validate URL format to prevent injection of malformed data
+          try {
+            const parsedUrl = new URL(url);
+            const allowedProtocols = ["http:", "https:", "tcp:", "udp:"];
+            if (!allowedProtocols.includes(parsedUrl.protocol)) {
+              return Response.json({ error: "Invalid URL protocol" }, { status: 400 });
+            }
+            if (parsedUrl.hostname.length > 253) {
+              return Response.json({ error: "URL hostname too long" }, { status: 400 });
+            }
+          } catch {
+            return Response.json({ error: "Invalid URL format" }, { status: 400 });
+          }
+
           // For TCP/UDP, we also need tunnelId and remotePort
           if (
             (protocol === "tcp" || protocol === "udp") &&

@@ -167,6 +167,7 @@ export type ClientMessage =
 
 export interface TunnelOpenedMessage {
   type: "tunnel_opened";
+  tunnelId?: string;
   url: string;
   protocol?: TunnelProtocol;
   port?: number;

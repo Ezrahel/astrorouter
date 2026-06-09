@@ -685,9 +685,9 @@ export interface FileRoutesByFullPath {
   '/api/webhooks/paystack': typeof ApiWebhooksPaystackRoute
   '/api/webhooks/polar': typeof ApiWebhooksPolarRoute
   '/$orgSlug/settings/': typeof OrgSlugSettingsIndexRoute
-  '/$orgSlug/tunnels': typeof OrgSlugTunnelsIndexRoute
-  '/admin/organizations': typeof AdminOrganizationsIndexRoute
-  '/admin/users': typeof AdminUsersIndexRoute
+  '/$orgSlug/tunnels/': typeof OrgSlugTunnelsIndexRoute
+  '/admin/organizations/': typeof AdminOrganizationsIndexRoute
+  '/admin/users/': typeof AdminUsersIndexRoute
   '/api/$orgSlug/domains/$domainId': typeof ApiOrgSlugDomainsDomainIdRouteWithChildren
   '/api/$orgSlug/portal/polar': typeof ApiOrgSlugPortalPolarRoute
   '/api/$orgSlug/requests/capture': typeof ApiOrgSlugRequestsCaptureRoute
@@ -702,9 +702,9 @@ export interface FileRoutesByFullPath {
   '/api/admin/users/$userId': typeof ApiAdminUsersUserIdRoute
   '/api/cli/login/status': typeof ApiCliLoginStatusRoute
   '/api/subscriptions/$orgSlug/cancel': typeof ApiSubscriptionsOrgSlugCancelRoute
-  '/api/$orgSlug/domains': typeof ApiOrgSlugDomainsIndexRoute
-  '/api/$orgSlug/subdomains': typeof ApiOrgSlugSubdomainsIndexRoute
-  '/api/$orgSlug/tunnels': typeof ApiOrgSlugTunnelsIndexRoute
+  '/api/$orgSlug/domains/': typeof ApiOrgSlugDomainsIndexRoute
+  '/api/$orgSlug/subdomains/': typeof ApiOrgSlugSubdomainsIndexRoute
+  '/api/$orgSlug/tunnels/': typeof ApiOrgSlugTunnelsIndexRoute
   '/api/$orgSlug/domains/$domainId/verify': typeof ApiOrgSlugDomainsDomainIdVerifyRoute
   '/api/$orgSlug/tunnels/$tunnelId/stop': typeof ApiOrgSlugTunnelsTunnelIdStopRoute
 }
@@ -983,9 +983,9 @@ export interface FileRouteTypes {
     | '/api/webhooks/paystack'
     | '/api/webhooks/polar'
     | '/$orgSlug/settings/'
-    | '/$orgSlug/tunnels'
-    | '/admin/organizations'
-    | '/admin/users'
+    | '/$orgSlug/tunnels/'
+    | '/admin/organizations/'
+    | '/admin/users/'
     | '/api/$orgSlug/domains/$domainId'
     | '/api/$orgSlug/portal/polar'
     | '/api/$orgSlug/requests/capture'
@@ -1000,9 +1000,9 @@ export interface FileRouteTypes {
     | '/api/admin/users/$userId'
     | '/api/cli/login/status'
     | '/api/subscriptions/$orgSlug/cancel'
-    | '/api/$orgSlug/domains'
-    | '/api/$orgSlug/subdomains'
-    | '/api/$orgSlug/tunnels'
+    | '/api/$orgSlug/domains/'
+    | '/api/$orgSlug/subdomains/'
+    | '/api/$orgSlug/tunnels/'
     | '/api/$orgSlug/domains/$domainId/verify'
     | '/api/$orgSlug/tunnels/$tunnelId/stop'
   fileRoutesByTo: FileRoutesByTo
@@ -1545,21 +1545,21 @@ declare module '@tanstack/react-router' {
     '/admin/users/': {
       id: '/admin/users/'
       path: '/users'
-      fullPath: '/admin/users'
+      fullPath: '/admin/users/'
       preLoaderRoute: typeof AdminUsersIndexRouteImport
       parentRoute: typeof AdminRoute
     }
     '/admin/organizations/': {
       id: '/admin/organizations/'
       path: '/organizations'
-      fullPath: '/admin/organizations'
+      fullPath: '/admin/organizations/'
       preLoaderRoute: typeof AdminOrganizationsIndexRouteImport
       parentRoute: typeof AdminRoute
     }
     '/$orgSlug/tunnels/': {
       id: '/$orgSlug/tunnels/'
       path: '/tunnels'
-      fullPath: '/$orgSlug/tunnels'
+      fullPath: '/$orgSlug/tunnels/'
       preLoaderRoute: typeof OrgSlugTunnelsIndexRouteImport
       parentRoute: typeof OrgSlugRoute
     }
@@ -1825,21 +1825,21 @@ declare module '@tanstack/react-router' {
     '/api/$orgSlug/tunnels/': {
       id: '/api/$orgSlug/tunnels/'
       path: '/api/$orgSlug/tunnels'
-      fullPath: '/api/$orgSlug/tunnels'
+      fullPath: '/api/$orgSlug/tunnels/'
       preLoaderRoute: typeof ApiOrgSlugTunnelsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/$orgSlug/subdomains/': {
       id: '/api/$orgSlug/subdomains/'
       path: '/api/$orgSlug/subdomains'
-      fullPath: '/api/$orgSlug/subdomains'
+      fullPath: '/api/$orgSlug/subdomains/'
       preLoaderRoute: typeof ApiOrgSlugSubdomainsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/$orgSlug/domains/': {
       id: '/api/$orgSlug/domains/'
       path: '/api/$orgSlug/domains'
-      fullPath: '/api/$orgSlug/domains'
+      fullPath: '/api/$orgSlug/domains/'
       preLoaderRoute: typeof ApiOrgSlugDomainsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }

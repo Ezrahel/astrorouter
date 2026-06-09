@@ -6,6 +6,17 @@ import { generateId, getBandwidthKey } from "../../../../shared/utils";
 import { protocolLogger } from "../lib/timescale";
 import { PortAllocator } from "./PortAllocator";
 
+const BANDWIDTH_INCR_SCRIPT = `
+  local key = KEYS[1]
+  local increment = tonumber(ARGV[1])
+  local limit = tonumber(ARGV[2])
+  local newUsage = redis.call('INCRBY', key, increment)
+  if newUsage > limit then
+    return 0
+  end
+  return 1
+`;
+
 interface UDPClient {
   address: string;
   port: number;
@@ -69,11 +80,9 @@ export class UDPProxy {
 
       socket.on("error", (err) => {
         console.error(`UDP Socket error for tunnel ${tunnelId}:`, err);
-        socket.close(() => {
-          this.tunnels.delete(tunnelId);
-          this.portAllocator.release(port);
-          resolve({ success: false, error: err.message });
-        });
+        this.tunnels.delete(tunnelId);
+        this.portAllocator.release(port);
+        socket.close();
         resolve({ success: false, error: err.message });
       });
 
@@ -251,8 +260,14 @@ export class UDPProxy {
     }
 
     const bandwidthKey = getBandwidthKey(tunnel.organizationId);
-    const newUsage = await this.redis.incrby(bandwidthKey, bytes);
-    return newUsage > tunnel.bandwidthLimit;
+    const allowed = await this.redis.eval(
+      BANDWIDTH_INCR_SCRIPT,
+      1,
+      bandwidthKey,
+      bytes.toString(),
+      tunnel.bandwidthLimit.toString(),
+    );
+    return allowed === 0;
   }
 
   private cleanupStaleClients(): void {

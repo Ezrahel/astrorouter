@@ -4,47 +4,77 @@ import { db } from "../../../db";
 import { subscriptions } from "../../../db/subscription-schema";
 import { eq } from "drizzle-orm";
 
+function getPolarWebhookSecret(): string {
+  const secret = process.env.POLAR_WEBHOOK_SECRET;
+  if (!secret) {
+    console.error("[Polar Webhook] POLAR_WEBHOOK_SECRET is not configured");
+    throw new Error("Polar webhook secret not configured");
+  }
+  return secret;
+}
+
+import { redis } from "../../../lib/redis";
+
+async function deduplicateWebhookEvent(eventId: string): Promise<boolean> {
+  const dedupKey = `webhook:polar:${eventId}`;
+  const exists = await redis.set(dedupKey, "1", "EX", 300, "NX");
+  return exists === "OK";
+}
+
+function withDedup<T extends { type: string; data: { id: string } }>(
+  handler: (payload: T) => Promise<void>,
+): (payload: T) => Promise<void> {
+  return async (payload: T) => {
+    const eventId = `${payload.type}:${payload.data.id}`;
+    if (!(await deduplicateWebhookEvent(eventId))) {
+      console.log(`[Polar Webhook] Duplicate event skipped: ${eventId}`);
+      return;
+    }
+    await handler(payload);
+  };
+}
+
 export const Route = createFileRoute("/api/webhooks/polar")({
   server: {
     handlers: {
       POST: Webhooks({
-        webhookSecret: process.env.POLAR_WEBHOOK_SECRET!,
+        webhookSecret: getPolarWebhookSecret(),
 
-        onSubscriptionCreated: async (payload) => {
+        onSubscriptionCreated: withDedup(async (payload) => {
           console.log("[Polar Webhook] Subscription created:", payload.data.id);
           await handleSubscriptionCreated(payload.data);
-        },
+        }),
 
-        onSubscriptionActive: async (payload) => {
+        onSubscriptionActive: withDedup(async (payload) => {
           console.log("[Polar Webhook] Subscription active:", payload.data.id);
           await handleSubscriptionActive(payload.data);
-        },
+        }),
 
-        onSubscriptionUpdated: async (payload) => {
+        onSubscriptionUpdated: withDedup(async (payload) => {
           console.log("[Polar Webhook] Subscription updated:", payload.data.id);
           await handleSubscriptionUpdated(payload.data);
-        },
+        }),
 
-        onSubscriptionCanceled: async (payload) => {
+        onSubscriptionCanceled: withDedup(async (payload) => {
           console.log(
             "[Polar Webhook] Subscription canceled:",
             payload.data.id,
           );
           await handleSubscriptionCanceled(payload.data);
-        },
+        }),
 
-        onSubscriptionUncanceled: async (payload) => {
+        onSubscriptionUncanceled: withDedup(async (payload) => {
           console.log(
             "[Polar Webhook] Subscription uncanceled:",
             payload.data.id,
           );
           await handleSubscriptionUncanceled(payload.data);
-        },
+        }),
 
-        onSubscriptionRevoked: async (payload) => {
+        onSubscriptionRevoked: withDedup(async (payload) => {
           console.log("[Polar Webhook] Subscription revoked:", payload.data.id);
           await handleSubscriptionRevoked(payload.data);
-        },
+        }),
 
         onPayload: async (payload) => {
           console.log("[Polar Webhook] Received event:", payload.type);
