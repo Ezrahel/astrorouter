@@ -1,5 +1,5 @@
 /**
- * Configuration options for the AstroRouter Next.js plugin
+ * Configuration options for the AstroRoute Next.js plugin
  */
 export interface OutrayPluginOptions {
   /**
@@ -10,7 +10,7 @@ export interface OutrayPluginOptions {
 
   /**
    * Custom domain for the tunnel
-   * Must be configured in the AstroRouter dashboard first
+   * Must be configured in the AstroRoute dashboard first
    */
   customDomain?: string;
 
@@ -22,7 +22,7 @@ export interface OutrayPluginOptions {
   apiKey?: string;
 
   /**
-   * AstroRouter server WebSocket URL
+   * AstroRoute server WebSocket URL
    * @default 'wss://api.astroroute.dev/'
    */
   serverUrl?: string;

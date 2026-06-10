@@ -4,7 +4,7 @@ import { ExpressPluginLanding } from "@/components/landing/express-plugin/Expres
 export const Route = createFileRoute("/express")({
   head: () => ({
     meta: [
-      { title: "Express Plugin - AstroRouter" },
+      { title: "Express Plugin - AstroRoute" },
     ],
   }),
   component: ExpressPluginLanding,

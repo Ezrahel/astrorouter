@@ -6,7 +6,7 @@ import { Card, CardHeader, CardContent, Input, Label } from "@/components/ui";
 export const Route = createFileRoute("/$orgSlug/settings/profile")({
   head: () => ({
     meta: [
-      { title: "Profile Settings - AstroRouter" },
+      { title: "Profile Settings - AstroRoute" },
     ],
   }),
   component: ProfileSettingsView,

@@ -45,7 +45,7 @@ function AdminLayout() {
       <div className="min-h-screen bg-[#070707] flex items-center justify-center p-4">
         <div className="w-full max-w-sm p-8 bg-[#0A0A0A] border border-white/10 rounded-2xl shadow-2xl">
           <div className="flex flex-col items-center text-center mb-8">
-            <img src="/logo.png" alt="AstroRouter Logo" className="w-12 mb-4" />
+            <img src="/logo.png" alt="AstroRoute Logo" className="w-12 mb-4" />
             <h3 className="text-xl font-bold text-white tracking-tight">
               Admin Access
             </h3>

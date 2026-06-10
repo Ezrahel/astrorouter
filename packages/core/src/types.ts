@@ -8,7 +8,7 @@ export type TunnelProtocol = "http" | "tcp" | "udp";
 // ============================================================================
 
 /**
- * Options for creating an AstroRouterClient instance
+ * Options for creating an AstroRouteClient instance
  */
 export interface OutrayClientOptions {
   /**
@@ -17,7 +17,7 @@ export interface OutrayClientOptions {
   localPort: number;
 
   /**
-   * AstroRouter server WebSocket URL
+   * AstroRoute server WebSocket URL
    * @default 'wss://api.astroroute.dev/'
    */
   serverUrl?: string;
@@ -35,7 +35,7 @@ export interface OutrayClientOptions {
 
   /**
    * Custom domain for the tunnel
-   * Must be configured in the AstroRouter dashboard first
+   * Must be configured in the AstroRoute dashboard first
    */
   customDomain?: string;
 

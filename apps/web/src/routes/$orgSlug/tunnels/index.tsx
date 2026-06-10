@@ -22,7 +22,7 @@ import { Button } from "@/components/ui";
 export const Route = createFileRoute("/$orgSlug/tunnels/")({
   head: () => ({
     meta: [
-      { title: "Tunnels - AstroRouter" },
+      { title: "Tunnels - AstroRoute" },
     ],
   }),
   component: TunnelsView,

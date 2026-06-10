@@ -9,7 +9,7 @@ import { useAdminStore } from "@/lib/admin-store";
 export const Route = createFileRoute("/admin/organizations/$slug")({
   head: () => ({
     meta: [
-      { title: "Organization Details - AstroRouter" },
+      { title: "Organization Details - AstroRoute" },
     ],
   }),
   component: AdminOrganizationDetailPage,

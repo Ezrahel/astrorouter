@@ -22,7 +22,7 @@ import { useAdminStore } from "@/lib/admin-store";
 export const Route = createFileRoute("/admin/users/$userId")({
   head: () => ({
     meta: [
-      { title: "User Details - AstroRouter" },
+      { title: "User Details - AstroRoute" },
     ],
   }),
   component: AdminUserDetailPage,

@@ -4,7 +4,7 @@ import { VitePluginLanding } from "@/components/landing/vite-plugin/VitePluginLa
 export const Route = createFileRoute("/vite")({
   head: () => ({
     meta: [
-      { title: "Vite Plugin - AstroRouter" },
+      { title: "Vite Plugin - AstroRoute" },
     ],
   }),
   component: VitePluginLanding,

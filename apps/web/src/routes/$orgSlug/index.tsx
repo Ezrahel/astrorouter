@@ -15,7 +15,7 @@ import { OverviewSkeleton } from "@/components/overview/overview-skeleton";
 export const Route = createFileRoute("/$orgSlug/")({
   head: () => ({
     meta: [
-      { title: "Overview - AstroRouter" },
+      { title: "Overview - AstroRoute" },
     ],
   }),
   component: OverviewView,

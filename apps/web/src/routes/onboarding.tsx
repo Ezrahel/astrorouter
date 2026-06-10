@@ -16,7 +16,7 @@ import { Button } from "@/components/ui";
 export const Route = createFileRoute("/onboarding")({
   head: () => ({
     meta: [
-      { title: "Create Organization - AstroRouter" },
+      { title: "Create Organization - AstroRoute" },
     ],
   }),
   component: Onboarding,
@@ -109,7 +109,7 @@ function Onboarding() {
   if (sessionPending) {
     return (
       <div className="fixed inset-0 bg-black flex items-center justify-center">
-        <img src="/logo.png" alt="AstroRouter" className="w-16 h-16 animate-pulse" />
+        <img src="/logo.png" alt="AstroRoute" className="w-16 h-16 animate-pulse" />
       </div>
     );
   }

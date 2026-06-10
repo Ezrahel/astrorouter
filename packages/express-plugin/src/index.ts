@@ -9,7 +9,7 @@ let client: OutrayClient | null = null;
 let localAccess: LocalAccessManager | null = null;
 
 /**
- * Express middleware that automatically starts an AstroRouter tunnel when the server starts.
+ * Express middleware that automatically starts an AstroRoute tunnel when the server starts.
  *
  * @example
  * ```ts
@@ -73,7 +73,7 @@ export default function astroroute(
       if (!address) {
         if (!silent) {
           console.log(
-            `  \x1b[33m○\x1b[0m  AstroRouter: Could not determine server address; tunnel will not be started`,
+            `  \x1b[33m○\x1b[0m  AstroRoute: Could not determine server address; tunnel will not be started`,
           );
         }
         return;
@@ -82,7 +82,7 @@ export default function astroroute(
       if (typeof address === "string") {
         if (!silent) {
           console.log(
-            `  \x1b[33m○\x1b[0m  AstroRouter: Server is listening on a pipe or Unix domain socket ("${address}"); tunnel only works with TCP ports`,
+            `  \x1b[33m○\x1b[0m  AstroRoute: Server is listening on a pipe or Unix domain socket ("${address}"); tunnel only works with TCP ports`,
           );
         }
         return;
@@ -132,7 +132,7 @@ export default function astroroute(
           })
           .catch(() => {
             if (!silent) {
-              console.log(`  \x1b[33m○\x1b[0m  AstroRouter: mDNS unavailable`);
+              console.log(`  \x1b[33m○\x1b[0m  AstroRoute: mDNS unavailable`);
             }
           });
       }
@@ -154,21 +154,21 @@ export default function astroroute(
         },
         onError: (error) => {
           if (!silent) {
-            console.error(`  \x1b[31m✗\x1b[0m  AstroRouter: ${error.message}`);
+            console.error(`  \x1b[31m✗\x1b[0m  AstroRoute: ${error.message}`);
           }
           options.onError?.(error);
         },
         onReconnecting: (attempt, delay) => {
           if (!silent) {
             console.log(
-              `  \x1b[33m⟳\x1b[0m  AstroRouter: Reconnecting in ${Math.round(delay / 1000)}s...`,
+              `  \x1b[33m⟳\x1b[0m  AstroRoute: Reconnecting in ${Math.round(delay / 1000)}s...`,
             );
           }
           options.onReconnecting?.();
         },
         onClose: () => {
           if (!silent) {
-            console.log(`  \x1b[33m○\x1b[0m  AstroRouter: Tunnel closed`);
+            console.log(`  \x1b[33m○\x1b[0m  AstroRoute: Tunnel closed`);
           }
           options.onClose?.();
         },

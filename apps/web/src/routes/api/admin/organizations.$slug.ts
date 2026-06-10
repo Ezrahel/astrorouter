@@ -280,7 +280,7 @@ export const Route = createFileRoute("/api/admin/organizations/$slug")({
                   subject,
                   htmlString: html,
                   senderEmail: "adelakin@astroroute.dev",
-                  senderName: "Adelakin from AstroRouter",
+                  senderName: "Adelakin from AstroRoute",
                 });
                 console.log(`[Subscription Reset Email] Sent to: ${owner.userEmail}`);
               } catch (emailError) {

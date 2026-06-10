@@ -15,7 +15,7 @@ import {
 export const Route = createFileRoute("/$orgSlug/requests")({
   head: () => ({
     meta: [
-      { title: "Requests - AstroRouter" },
+      { title: "Requests - AstroRoute" },
     ],
   }),
   component: RequestsView,

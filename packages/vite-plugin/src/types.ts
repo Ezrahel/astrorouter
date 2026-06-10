@@ -1,7 +1,7 @@
 import type { Plugin } from "vite";
 
 /**
- * Configuration options for the AstroRouter Vite plugin
+ * Configuration options for the AstroRoute Vite plugin
  */
 export interface OutrayPluginOptions {
   /**
@@ -12,7 +12,7 @@ export interface OutrayPluginOptions {
 
   /**
    * Custom domain for the tunnel
-   * Must be configured in the AstroRouter dashboard first
+   * Must be configured in the AstroRoute dashboard first
    */
   customDomain?: string;
 
@@ -24,7 +24,7 @@ export interface OutrayPluginOptions {
   apiKey?: string;
 
   /**
-   * AstroRouter server WebSocket URL
+   * AstroRoute server WebSocket URL
    * @default 'wss://api.astroroute.dev/'
    */
   serverUrl?: string;

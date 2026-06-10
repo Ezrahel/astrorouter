@@ -4,7 +4,7 @@ import { NextPluginLanding } from "@/components/landing/next-plugin/NextPluginLa
 export const Route = createFileRoute("/nextjs")({
   head: () => ({
     meta: [
-      { title: "Next.js Plugin - AstroRouter" },
+      { title: "Next.js Plugin - AstroRoute" },
     ],
   }),
   component: NextPluginLanding,

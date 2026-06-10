@@ -22,7 +22,7 @@ type Currency = "USD" | "NGN";
 
 export const Route = createFileRoute("/$orgSlug/billing")({
   head: () => ({
-    meta: [{ title: "Billing - AstroRouter" }],
+    meta: [{ title: "Billing - AstroRoute" }],
   }),
   component: BillingView,
   validateSearch: (search?: Record<string, unknown>): { success?: boolean } => {

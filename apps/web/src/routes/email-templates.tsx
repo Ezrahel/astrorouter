@@ -25,9 +25,9 @@ function EmailTemplatesPage() {
         <div className="w-64 bg-[#070707] border-r border-white/5 flex flex-col">
           <div className="p-4 border-b border-white/5">
             <div className="flex items-center gap-3">
-              <img src="/logo.png" alt="AstroRouter Logo" className="w-8" />
+              <img src="/logo.png" alt="AstroRoute Logo" className="w-8" />
               <span className="font-bold text-white text-lg tracking-tight">
-                AstroRouter
+                AstroRoute
               </span>
             </div>
           </div>

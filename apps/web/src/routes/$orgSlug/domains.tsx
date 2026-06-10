@@ -14,7 +14,7 @@ import { AlertModal } from "@/components/alert-modal";
 export const Route = createFileRoute("/$orgSlug/domains")({
   head: () => ({
     meta: [
-      { title: "Domains - AstroRouter" },
+      { title: "Domains - AstroRoute" },
     ],
   }),
   component: DomainsView,

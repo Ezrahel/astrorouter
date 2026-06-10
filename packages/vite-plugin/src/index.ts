@@ -58,7 +58,7 @@ export default function astroroutePlugin(
       if (!server.httpServer) {
         if (!silent) {
           server.config.logger.info(
-            `  \x1b[33m○\x1b[0m  AstroRouter: httpServer is not available; tunnel will not be started`,
+            `  \x1b[33m○\x1b[0m  AstroRoute: httpServer is not available; tunnel will not be started`,
           );
         }
         return;
@@ -70,7 +70,7 @@ export default function astroroutePlugin(
         if (!address) {
           if (!silent) {
             server.config.logger.info(
-              `  \x1b[33m○\x1b[0m  AstroRouter: Could not determine dev server address; tunnel will not be started`,
+              `  \x1b[33m○\x1b[0m  AstroRoute: Could not determine dev server address; tunnel will not be started`,
             );
           }
           return;
@@ -79,7 +79,7 @@ export default function astroroutePlugin(
         if (typeof address === "string") {
           if (!silent) {
             server.config.logger.info(
-              `  \x1b[33m○\x1b[0m  AstroRouter: Dev server is listening on a pipe or Unix domain socket ("${address}"); tunnel only works with TCP ports`,
+              `  \x1b[33m○\x1b[0m  AstroRoute: Dev server is listening on a pipe or Unix domain socket ("${address}"); tunnel only works with TCP ports`,
             );
           }
           return;
@@ -134,7 +134,7 @@ export default function astroroutePlugin(
             .catch(() => {
               if (!silent) {
                 server.config.logger.warn(
-                  `  \x1b[33m○\x1b[0m  AstroRouter: mDNS unavailable`,
+                  `  \x1b[33m○\x1b[0m  AstroRoute: mDNS unavailable`,
                 );
               }
             });
@@ -160,7 +160,7 @@ export default function astroroutePlugin(
           onError: (error) => {
             if (!silent) {
               server.config.logger.error(
-                `  \x1b[31m✗\x1b[0m  AstroRouter: ${error.message}`,
+                `  \x1b[31m✗\x1b[0m  AstroRoute: ${error.message}`,
               );
             }
             options.onError?.(error);
@@ -168,7 +168,7 @@ export default function astroroutePlugin(
           onReconnecting: (attempt, delay) => {
             if (!silent) {
               server.config.logger.info(
-                `  \x1b[33m⟳\x1b[0m  AstroRouter: Reconnecting in ${Math.round(delay / 1000)}s...`,
+                `  \x1b[33m⟳\x1b[0m  AstroRoute: Reconnecting in ${Math.round(delay / 1000)}s...`,
               );
             }
             options.onReconnecting?.();
@@ -176,7 +176,7 @@ export default function astroroutePlugin(
           onClose: () => {
             if (!silent) {
               server.config.logger.info(
-                `  \x1b[33m○\x1b[0m  AstroRouter: Tunnel closed`,
+                `  \x1b[33m○\x1b[0m  AstroRoute: Tunnel closed`,
               );
             }
             options.onClose?.();

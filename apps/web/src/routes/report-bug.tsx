@@ -7,7 +7,7 @@ import { ArrowRight, CheckCircle2, Loader2, Bug } from "lucide-react";
 export const Route = createFileRoute("/report-bug")({
   head: () => ({
     meta: [
-      { title: "Report a Bug - AstroRouter" },
+      { title: "Report a Bug - AstroRoute" },
     ],
   }),
   component: ReportBugPage,
@@ -79,7 +79,7 @@ function ReportBugPage() {
                 <div>
                   <p className="font-bold text-lg">Bug report submitted!</p>
                   <p className="text-sm text-green-400/70">
-                    Thank you for helping us improve AstroRouter. We'll investigate this issue.
+                    Thank you for helping us improve AstroRoute. We'll investigate this issue.
                   </p>
                 </div>
               </div>

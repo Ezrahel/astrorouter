@@ -1,8 +1,8 @@
-# AstroRouter - AI Coding Instructions
+# AstroRoute - AI Coding Instructions
 
 ## Project Overview
 
-AstroRouter is an open-source tunneling solution that exposes localhost servers to the internet. It supports HTTP, TCP, and UDP protocols with custom domains, team management, and real-time analytics.
+AstroRoute is an open-source tunneling solution that exposes localhost servers to the internet. It supports HTTP, TCP, and UDP protocols with custom domains, team management, and real-time analytics.
 
 ## Architecture
 

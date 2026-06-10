@@ -8,7 +8,7 @@ import { Button } from "@/components/ui";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact Us - AstroRouter" },
+      { title: "Contact Us - AstroRoute" },
     ],
   }),
   component: ContactPage,

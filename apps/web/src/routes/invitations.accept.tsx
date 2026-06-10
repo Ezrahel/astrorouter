@@ -6,7 +6,7 @@ import { Button } from "@/components/ui";
 export const Route = createFileRoute("/invitations/accept")({
   head: () => ({
     meta: [
-      { title: "Accept Invitation - AstroRouter" },
+      { title: "Accept Invitation - AstroRoute" },
     ],
   }),
   component: AcceptInvitation,

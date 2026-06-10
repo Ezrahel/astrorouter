@@ -1,5 +1,5 @@
 /**
- * Configuration options for the AstroRouter Express middleware
+ * Configuration options for the AstroRoute Express middleware
  */
 export interface OutrayPluginOptions {
   /**
@@ -10,7 +10,7 @@ export interface OutrayPluginOptions {
 
   /**
    * Custom domain for the tunnel
-   * Must be configured in the AstroRouter dashboard first
+   * Must be configured in the AstroRoute dashboard first
    */
   customDomain?: string;
 

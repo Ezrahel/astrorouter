@@ -69,7 +69,7 @@ interface OutrayPluginOptions {
   /** API key for authentication */
   apiKey?: string;
   
-  /** AstroRouter server URL */
+  /** AstroRoute server URL */
   serverUrl?: string;
   
   /** Enable/disable tunnel (default: true in development) */
@@ -94,7 +94,7 @@ interface OutrayPluginOptions {
 
 ## Environment Variables
 
-- `OUTRAY_API_KEY` - Your AstroRouter API key
+- `OUTRAY_API_KEY` - Your AstroRoute API key
 - `OUTRAY_SUBDOMAIN` - Custom subdomain
 - `OUTRAY_ENABLED` - Set to `"false"` to disable
 - `OUTRAY_SERVER_URL` - Custom server URL (default: `wss://api.astroroute.dev/`)

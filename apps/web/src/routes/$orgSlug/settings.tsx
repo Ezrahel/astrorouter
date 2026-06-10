@@ -5,7 +5,7 @@ import { User, Building2 } from "lucide-react";
 export const Route = createFileRoute("/$orgSlug/settings")({
   head: () => ({
     meta: [
-      { title: "Settings - AstroRouter" },
+      { title: "Settings - AstroRoute" },
     ],
   }),
   component: SettingsLayout,

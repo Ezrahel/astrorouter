@@ -12,7 +12,7 @@ import { Card, CardHeader, CardContent, Button, IconButton } from "@/components/
 export const Route = createFileRoute("/$orgSlug/tokens")({
   head: () => ({
     meta: [
-      { title: "API Tokens - AstroRouter" },
+      { title: "API Tokens - AstroRoute" },
     ],
   }),
   component: TokensSettingsView,

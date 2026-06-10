@@ -2,9 +2,9 @@
   <img alt="Vercel OSS Program" src="https://vercel.com/oss/program-badge.svg" />
 </a>
 
-# AstroRouter
+# AstroRoute
 
-**Expose your localhost to the internet.** AstroRouter is an open-source tunneling solution that lets you share local servers with anyone, anywhere.
+**Expose your localhost to the internet.** AstroRoute is an open-source tunneling solution that lets you share local servers with anyone, anywhere.
 
 
 ## Features

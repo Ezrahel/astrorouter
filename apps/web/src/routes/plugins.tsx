@@ -4,7 +4,7 @@ import { PluginsPage } from "@/components/landing/plugins/PluginsPage";
 export const Route = createFileRoute("/plugins")({
   head: () => ({
     meta: [
-      { title: "Plugins - AstroRouter" },
+      { title: "Plugins - AstroRoute" },
     ],
   }),
   component: PluginsPage,

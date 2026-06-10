@@ -61,7 +61,7 @@ await astroroute(app, {
 |--------|------|---------|-------------|
 | `port` | `number` | Auto-detected | The local port your NestJS app is running on. |
 | `subdomain` | `string` | Random | Request a specific subdomain. |
-| `apiKey` | `string` | `process.env.OUTRAY_API_KEY` | Your AstroRouter API key. |
+| `apiKey` | `string` | `process.env.OUTRAY_API_KEY` | Your AstroRoute API key. |
 | `enabled` | `boolean` | `true` (in dev) | Whether to enable the tunnel. |
 | `silent` | `boolean` | `false` | specific to Console logs. |
 | `onTunnelReady` | `(url: string) => void` | - | Callback when tunnel is ready. |

@@ -130,21 +130,21 @@ function startTunnel(
     },
     onError: (error) => {
       if (!silent) {
-        console.error(`  \x1b[31m✗\x1b[0m  AstroRouter: ${error.message}`);
+        console.error(`  \x1b[31m✗\x1b[0m  AstroRoute: ${error.message}`);
       }
       options.onError?.(error);
     },
     onReconnecting: (attempt, delay) => {
       if (!silent) {
         console.log(
-          `  \x1b[33m⟳\x1b[0m  AstroRouter: Reconnecting in ${Math.round(delay / 1000)}s...`,
+          `  \x1b[33m⟳\x1b[0m  AstroRoute: Reconnecting in ${Math.round(delay / 1000)}s...`,
         );
       }
       options.onReconnecting?.();
     },
     onClose: () => {
       if (!silent) {
-        console.log(`  \x1b[33m○\x1b[0m  AstroRouter: Tunnel closed`);
+        console.log(`  \x1b[33m○\x1b[0m  AstroRoute: Tunnel closed`);
       }
       options.onClose?.();
     },

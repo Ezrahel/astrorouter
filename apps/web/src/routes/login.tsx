@@ -7,7 +7,7 @@ import { Button } from "@/components/ui";
 export const Route = createFileRoute("/login")({
   head: () => ({
     meta: [
-      { title: "Log In - AstroRouter" },
+      { title: "Log In - AstroRoute" },
     ],
   }),
   component: RouteComponent,
@@ -42,9 +42,9 @@ function RouteComponent() {
       <div className="w-full max-w-md space-y-8 p-8">
         <div className="text-center mb-12">
           <Link to="/" className="flex items-center justify-center gap-3 mb-6">
-            <img src="/logo.png" alt="AstroRouter Logo" className="w-12" />
+            <img src="/logo.png" alt="AstroRoute Logo" className="w-12" />
             <p className="font-bold text-white text-2xl tracking-tight">
-              AstroRouter
+              AstroRoute
             </p>
           </Link>
           <h2 className="text-3xl font-bold tracking-tight text-white">
@@ -82,7 +82,7 @@ function RouteComponent() {
         </div>
 
         <p className="text-center text-xs text-gray-600 mt-8">
-          By continuing, you agree to AstroRouter's Terms of Service and Privacy
+          By continuing, you agree to AstroRoute's Terms of Service and Privacy
           Policy
         </p>
       </div>

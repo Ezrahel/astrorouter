@@ -4,7 +4,7 @@ import { TermsPage } from "@/components/landing/legal/TermsPage";
 export const Route = createFileRoute("/terms")({
   head: () => ({
     meta: [
-      { title: "Terms of Service - AstroRouter" },
+      { title: "Terms of Service - AstroRoute" },
     ],
   }),
   component: TermsPage,

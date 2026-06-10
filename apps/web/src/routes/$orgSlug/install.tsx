@@ -5,7 +5,7 @@ import { Copy, Check, Download, Key, Play } from "lucide-react";
 export const Route = createFileRoute("/$orgSlug/install")({
   head: () => ({
     meta: [
-      { title: "Install - AstroRouter" },
+      { title: "Install - AstroRoute" },
     ],
   }),
   component: Install,
@@ -18,7 +18,7 @@ function Install() {
     <div className="mx-auto max-w-5xl p-8">
       <div className="mb-12">
         <h1 className="text-4xl font-bold text-white mb-4">
-          Get Started with AstroRouters
+          Get Started with AstroRoutes
         </h1>
         <p className="text-gray-400 text-lg">
           Follow these simple steps to expose your local services to the world.
@@ -39,7 +39,7 @@ function Install() {
               <h2 className="text-2xl font-bold text-white">Install the CLI</h2>
             </div>
             <p className="text-gray-400 mb-6 max-w-xl">
-              Install the AstroRouter CLI globally using npm. This will allow you to
+              Install the AstroRoute CLI globally using npm. This will allow you to
               create and manage tunnels from your terminal.
             </p>
             <div className="bg-black/50 rounded-xl border border-white/10 p-4 flex items-center justify-between group/code">

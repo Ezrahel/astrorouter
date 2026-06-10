@@ -11,7 +11,7 @@ import { useAdminStore } from "@/lib/admin-store";
 export const Route = createFileRoute("/admin/subscriptions")({
   head: () => ({
     meta: [
-      { title: "Admin Subscriptions - AstroRouter" },
+      { title: "Admin Subscriptions - AstroRoute" },
     ],
   }),
   component: AdminSubscriptionsPage,

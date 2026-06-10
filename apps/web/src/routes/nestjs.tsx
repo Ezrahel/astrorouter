@@ -4,7 +4,7 @@ import { NestJSPluginLanding } from "@/components/landing/nestjs-plugin/NestJSPl
 export const Route = createFileRoute("/nestjs")({
   head: () => ({
     meta: [
-      { title: "NestJS Plugin - AstroRouter" },
+      { title: "NestJS Plugin - AstroRoute" },
     ],
   }),
   component: NestJSPluginLanding,

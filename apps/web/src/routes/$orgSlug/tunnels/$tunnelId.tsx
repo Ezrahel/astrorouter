@@ -18,7 +18,7 @@ import { TunnelRequests } from "@/components/tunnel-details/tunnel-requests";
 export const Route = createFileRoute("/$orgSlug/tunnels/$tunnelId")({
   head: () => ({
     meta: [
-      { title: "Tunnel Details - AstroRouter" },
+      { title: "Tunnel Details - AstroRoute" },
     ],
   }),
   component: TunnelDetailView,

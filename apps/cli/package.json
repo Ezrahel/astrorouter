@@ -1,7 +1,7 @@
 {
   "name": "astroroute",
   "version": "0.1.9",
-  "description": "AstroRouter CLI - Expose your local server to the internet",
+  "description": "AstroRoute CLI - Expose your local server to the internet",
   "main": "dist/index.js",
   "bin": {
     "astroroute": "dist/index.js"

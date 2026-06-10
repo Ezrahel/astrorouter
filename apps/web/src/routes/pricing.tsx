@@ -11,7 +11,7 @@ import { SlidingToggle } from "@/components/ui/sliding-toggle";
 
 export const Route = createFileRoute("/pricing")({
   head: () => ({
-    meta: [{ title: "Pricing - AstroRouter" }],
+    meta: [{ title: "Pricing - AstroRoute" }],
   }),
   component: PricingPage,
 });
@@ -203,11 +203,11 @@ function PricingPage() {
       <footer className="border-t border-white/10 py-12 bg-black">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex items-center gap-2">
-            <img src="/logo.png" alt="AstroRouter Logo" className="w-6" />
-            <span className="font-bold">AstroRouter</span>
+            <img src="/logo.png" alt="AstroRoute Logo" className="w-6" />
+            <span className="font-bold">AstroRoute</span>
           </div>
           <div className="text-white/40 text-sm">
-            © {new Date().getFullYear()} AstroRouter Inc. All rights reserved.
+            © {new Date().getFullYear()} AstroRoute Inc. All rights reserved.
           </div>
           <div className="flex gap-6 text-white/60">
             <a href="#" className="hover:text-white transition-colors">

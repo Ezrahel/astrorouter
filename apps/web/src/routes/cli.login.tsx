@@ -12,7 +12,7 @@ import { Button } from "@/components/ui";
 export const Route = createFileRoute("/cli/login")({
   head: () => ({
     meta: [
-      { title: "CLI Login - AstroRouter" },
+      { title: "CLI Login - AstroRoute" },
     ],
   }),
   component: CLILogin,

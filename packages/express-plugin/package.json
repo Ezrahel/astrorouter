@@ -1,7 +1,7 @@
 {
   "name": "@astroroute/express",
   "version": "0.0.2",
-  "description": "Express middleware to automatically expose your dev server via AstroRouter tunnel",
+  "description": "Express middleware to automatically expose your dev server via AstroRoute tunnel",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",

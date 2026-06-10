@@ -24,7 +24,7 @@ import { Button, IconButton, Badge } from "@/components/ui";
 export const Route = createFileRoute("/$orgSlug/members")({
   head: () => ({
     meta: [
-      { title: "Members - AstroRouter" },
+      { title: "Members - AstroRoute" },
     ],
   }),
   component: MembersView,

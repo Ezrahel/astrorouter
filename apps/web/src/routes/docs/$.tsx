@@ -17,7 +17,7 @@ import { Mermaid } from "@/components/mdx/mermaid";
 export const Route = createFileRoute("/docs/$")({
   head: ({ loaderData }) => ({
     meta: [
-      { title: loaderData?.title ? `${loaderData.title} - AstroRouter Docs` : "Documentation - AstroRouter" },
+      { title: loaderData?.title ? `${loaderData.title} - AstroRoute Docs` : "Documentation - AstroRoute" },
     ],
   }),
   component: Page,

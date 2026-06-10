@@ -4,7 +4,7 @@ import { PrivacyPage } from "@/components/landing/legal/PrivacyPage";
 export const Route = createFileRoute("/privacy")({
   head: () => ({
     meta: [
-      { title: "Privacy Policy - AstroRouter" },
+      { title: "Privacy Policy - AstroRoute" },
     ],
   }),
   component: PrivacyPage,

@@ -9,7 +9,7 @@ import { Card, CardHeader, CardContent, Input, Label } from "@/components/ui";
 export const Route = createFileRoute("/$orgSlug/settings/organization")({
   head: () => ({
     meta: [
-      { title: "Organization Settings - AstroRouter" },
+      { title: "Organization Settings - AstroRoute" },
     ],
   }),
   component: OrganizationSettingsView,

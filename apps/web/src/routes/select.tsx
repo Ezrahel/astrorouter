@@ -5,7 +5,7 @@ import { ArrowRight } from "lucide-react";
 export const Route = createFileRoute("/select")({
   head: () => ({
     meta: [
-      { title: "Select Organization - AstroRouter" },
+      { title: "Select Organization - AstroRoute" },
     ],
   }),
   component: SelectOrganization,
@@ -31,9 +31,9 @@ function SelectOrganization() {
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
           <div className="flex items-center justify-center gap-3 mb-6">
-            <img src="/logo.png" alt="AstroRouter Logo" className="w-10" />
+            <img src="/logo.png" alt="AstroRoute Logo" className="w-10" />
             <span className="font-bold text-white text-xl tracking-tight">
-              AstroRouter
+              AstroRoute
             </span>
           </div>
           <h2 className="text-2xl font-bold text-white tracking-tight">

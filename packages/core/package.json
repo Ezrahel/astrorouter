@@ -1,7 +1,7 @@
 {
   "name": "@astroroute/core",
   "version": "0.0.4",
-  "description": "Core tunnel client for AstroRouter - shared between CLI and framework plugins",
+  "description": "Core tunnel client for AstroRoute - shared between CLI and framework plugins",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",

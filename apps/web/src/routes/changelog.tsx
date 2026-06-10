@@ -4,7 +4,7 @@ import { ChangelogPage } from "@/components/landing/changelog/ChangelogPage";
 export const Route = createFileRoute("/changelog")({
   head: () => ({
     meta: [
-      { title: "Changelog - AstroRouter" },
+      { title: "Changelog - AstroRoute" },
     ],
   }),
   component: ChangelogPage,

@@ -1,8 +1,8 @@
 # @astroroute/core
 
-Core tunnel client for [AstroRouter](https://astroroute.dev) - shared between the CLI and framework plugins.
+Core tunnel client for [AstroRoute](https://astroroute.dev) - shared between the CLI and framework plugins.
 
-This package provides the low-level WebSocket client for establishing tunnels to the AstroRouter server. It's used internally by:
+This package provides the low-level WebSocket client for establishing tunnels to the AstroRoute server. It's used internally by:
 
 - `astroroute` (CLI)
 - `@astroroute/vite` (Vite plugin)
@@ -63,14 +63,14 @@ client.stop();
 
 ## API
 
-### `AstroRouterClient`
+### `AstroRouteClient`
 
 #### Constructor Options
 
 | Option | Type | Default | Description |
 |--------|------|---------|-------------|
 | `localPort` | `number` | **required** | Local port to proxy requests to |
-| `serverUrl` | `string` | `'wss://api.astroroute.dev/'` | AstroRouter server WebSocket URL |
+| `serverUrl` | `string` | `'wss://api.astroroute.dev/'` | AstroRoute server WebSocket URL |
 | `apiKey` | `string` | - | API key for authentication |
 | `subdomain` | `string` | - | Subdomain to use (requires auth) |
 | `customDomain` | `string` | - | Custom domain (must be configured in dashboard) |

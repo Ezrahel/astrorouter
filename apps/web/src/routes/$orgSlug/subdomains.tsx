@@ -13,7 +13,7 @@ import { LimitModal } from "@/components/limit-modal";
 export const Route = createFileRoute("/$orgSlug/subdomains")({
   head: () => ({
     meta: [
-      { title: "Subdomains - AstroRouter" },
+      { title: "Subdomains - AstroRoute" },
     ],
   }),
   component: SubdomainsView,
